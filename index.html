@@ -10,22 +10,25 @@
 <body>
     <form action="">
         <label for="exercise">Exercise: </label>
-        <input type="text">
+        <input id="exercise" type="text">
         <label for="duration">Duration: </label>
+        <input id="duration"  type="number">
+        <label for="reps">Reps: </label>
         <input type="number">
         <label for="rest">Rest:</label>
         <input type="number">
+        <button type="submit">Submit</button>
     </form>
 
     <ul>
         <li class="exercise"></li>
         <li class="duration"></li>
-        <li class="interval"></li>
+        <li class="rest"></li>
     </ul>
 
     <p class="exercise"></p>
     <p class="duration"></p>
-    <p class="interval"></p>
+    <p class="rest"></p>
 
     <button>Start</button>
     <button>Pause</button>
