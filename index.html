@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css" />
     <script defer src="js/main.js"></script>
-</head>
-<body>
-    <form action="">
-        <label for="exercise">Exercise: </label>
-        <input id="exercise" type="text">
-        <label for="duration">Duration: </label>
-        <input id="duration"  type="number">
-        <label for="reps">Reps: </label>
-        <input type="number">
-        <label for="rest">Rest:</label>
-        <input type="number">
-        <button type="submit">Submit</button>
-    </form>
+  </head>
+  <body>
+    <div action="">
+      <label for="exercise">Exercise: </label>
+      <input id="exercise" type="text" value="pushup" />
+      <label for="duration">Duration: </label>
+      <input id="duration" type="number" value="0"/>
+      <label for="reps">Reps: </label>
+      <input id="reps" type="number" value="0"/>
+      <label for="interval">Rest:</label>
+      <input id="interval" type="number" />
+      <button onclick="handleSubmitClick()">Submit</button>
+    </div>
 
-    <ul>
-        <li class="exercise"></li>
-        <li class="duration"></li>
-        <li class="rest"></li>
-    </ul>
-
-    <p class="exercise"></p>
-    <p class="duration"></p>
-    <p class="rest"></p>
+    <section>
+      <ul id="exercise-list"></ul>
+      <ul id="duration-list"></ul>
+      <ul id="reps-list"></ul>
+      <ul id="interval-list"></ul>
+    </section>
 
     <button>Start</button>
     <button>Pause</button>
-    
-</body>
+  </body>
 </html>
