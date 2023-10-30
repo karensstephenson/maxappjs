@@ -5,10 +5,9 @@ const duration = document.getElementById("duration");
 const reps = document.getElementById("reps");
 const interval = document.getElementById("interval");
 
-if (!exerciseList.hasChildNodes()) {
-  showHeadings()
-}
 showExercises()
+//ShowHeadings()
+
 
 function showHeadings () {
   const li = document.createElement("li")
@@ -98,6 +97,10 @@ function saveData() {
 
 function showExercises() {
   exerciseList.innerHTML = localStorage.getItem("data")
+  if (!exerciseList.hasChildNodes()) {
+    showHeadings()
+  }
+  
 }
 
 // delete exercise from list
@@ -110,13 +113,32 @@ function showExercises() {
 
 function handleStartClick() {
   const form = document.getElementById("form")
-  const startButton = document.getElementById("startButton")
-  if (form.style.display === "none") {
+  const startButton = document.getElementById
+  ("startButton")
+  const h1 = document.getElementById("h1")
+  const clear = document.getElementById("clear")
+  const pause = document.getElementById("pause")
+  const restart = document.getElementById("restart")
+  if (form.style.display === "none" ) {
     form.style.display = "flex"
+    h1.style.display = 'block'
+    startButton.innerHTML = "Start"
+    clear.style.display = 'inline-block'
+    pause.style.display = "none"
+    restart.style.display = "none"
   } else {
     form.style.display = "none"
+    h1.style.display = "none"
     startButton.innerHTML = "Add more exercises"
+    clear.style.display = 'none'
+    pause.style.display = "inline-block"
+    restart.style.display = "inline-block"
   }
+}
+
+function handleClearClick() {
+  exerciseList.innerHTML = ""
+  showHeadings()
 }
 
 

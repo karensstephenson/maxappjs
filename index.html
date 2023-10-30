@@ -8,6 +8,7 @@
     <script defer src="js/main.js"></script>
   </head>
   <body>
+    <h1 id="h1">Design Your Workout</h1>
     <form id="form">
       <label for="exercise">Exercise: </label>
       <input id="exercise" type="text" placeholder="Enter an exercise"   required/>
@@ -28,6 +29,8 @@
     </section>
 
     <button id="startButton" onclick="handleStartClick()">Start</button>
-    <button>Pause</button>
+    <button id="clear" onclick="handleClearClick()">Clear List</button>
+    <button id="restart">Restart</button>
+    <button id="pause">Pause</button>
   </body>
 </html>

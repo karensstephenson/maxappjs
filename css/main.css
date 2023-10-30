@@ -92,6 +92,18 @@ span {
     padding-left: 25px;
 }
 
+#clear {
+    display: inline-block;
+}
+
+#pause {
+    display: none;
+}
+
+#restart {
+    display: none;
+}
+
 
 
 
