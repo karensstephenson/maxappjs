@@ -1,18 +1,11 @@
-// user enters exercise, duration or reps, and rest interval
-//const exercise = document.getElementById("exercise")
-
-// submit these choices
-// function showInfo() {
-//     exercise.style.display = 'block'
-// }
-
-// exercise.addEventListener('submit', showInfo)
-// exercise.onSubmit = showInfo
 
 const savedExercises = ['Exercise'];
 const savedDuration = ['Duration'];
 const savedReps = ['Reps'];
 const savedInterval = ['Intervals']
+const exerciseList = document.getElementById("exercise-list");
+showExercises()
+
 
 function handleSubmitClick() {
   // grab exercise input and add to exercise array
@@ -40,35 +33,93 @@ function handleSubmitClick() {
   console.log(savedInterval);
 
     // adds exercises to page
-  for (var i = 0; i < savedExercises.length; i++) {
+  for (let i = 0; i < savedExercises.length; i++) {
     addItemToList(savedExercises[i], exerciseList);
-    addItemToList(savedDuration[i], durationList);
-    addItemToList(savedReps[i], repsList);
-    addItemToList(savedInterval[i], intervalList);
+    // addItemToList(savedDuration[i], durationList);
+    // addItemToList(savedReps[i], repsList);
+    // addItemToList(savedInterval[i], intervalList);
+    // addItemToList("\u00d7", deleteList)
     
 
   }
-
+  
+  
 
 }
+
+
 
 function clearExercisesInUI() {
   const exerciseList = document.getElementById("exercise-list");
   exerciseList.innerHTML = "";
-  const durationList = document.getElementById("duration-list");
-  durationList.innerHTML = "";
-  const repsList = document.getElementById("reps-list");
-  repsList.innerHTML = "";
-  const intervalList = document.getElementById("interval-list");
-  intervalList.innerHTML = "";
+  // const durationList = document.getElementById("duration-list");
+  // durationList.innerHTML = "";
+  // const repsList = document.getElementById("reps-list");
+  // repsList.innerHTML = "";
+  // const intervalList = document.getElementById("interval-list");
+  // intervalList.innerHTML = "";
+  // const deleteList = document.getElementById("deleteList")
+  // deleteList.innerHTML = ""
 }
 
 function addItemToList(exerciseName, exerciseList) {
-  const node = document.createElement("li");
-  const textnode = document.createTextNode(exerciseName);
-  node.appendChild(textnode);
-  exerciseList.appendChild(node);
+  const li = document.createElement("li")
+  const exerciseSpan = document.createElement("span")
+  const durationSpan = document.createElement("span")
+  const repsSpan = document.createElement("span")
+  const intervalSpan = document.createElement("span")
+  const deleteSpan = document.createElement("span")
+
+  deleteSpan.setAttribute("id", "deleteSpanId")
+
+  exerciseSpan.innerHTML = exerciseName
+  durationSpan.innerHTML = exerciseName
+  repsSpan.innerHTML = exerciseName
+  intervalSpan.innerHTML = exerciseName
+  deleteSpan.innerHTML = "\u00d7"
+
+  li.appendChild(exerciseSpan)
+  li.appendChild(durationSpan)
+  li.appendChild(repsSpan)
+  li.appendChild(intervalSpan)
+  li.appendChild(deleteSpan)
+
+  exerciseList.appendChild(li)
+  saveData()
 }
+
+function saveData() {
+  localStorage.setItem("data", exerciseList.innerHTML)
+}
+
+function showExercises() {
+  exerciseList.innerHTML = localStorage.getItem("data")
+}
+
+// delete exercise from list
+
+  exerciseList.addEventListener("click", function(e) {
+    e.target.parentNode.remove()
+})
+
+
+
+
+
+  
+
+
+
+
+function addDeleteButtonToList(exerciseName, exerciseList) {
+  const button = document.createElement("button");
+  button.setAttribute('id', exerciseName)
+  const textnode = document.createTextNode(exerciseName);
+  button.appendChild(textnode);
+  exerciseList.appendChild(button);
+}
+
+
 
 // if exercise or duration/reps or rest empty, display message to enter value
 if (exercise === "") {

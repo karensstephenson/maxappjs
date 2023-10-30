@@ -33,9 +33,25 @@ section {
 ul {
     list-style: none;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
     align-items: center;
+    padding: 20px;
+}
+
+li {
+    padding: 10px;
+}
+
+#deleteSpan:hover {
+    background: #d8d8d8;
+}
+
+span {
+    padding: 10px;
+}
+
+#deleteSpanId:hover {
+    background-color: lightgray;
 }
 
 

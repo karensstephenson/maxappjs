@@ -10,21 +10,21 @@
   <body>
     <div action="">
       <label for="exercise">Exercise: </label>
-      <input id="exercise" type="text" value="pushup" />
+      <input id="exercise" type="text" value="push up"   required/>
       <label for="duration">Duration: </label>
       <input id="duration" type="number" value="0"/>
       <label for="reps">Reps: </label>
       <input id="reps" type="number" value="0"/>
       <label for="interval">Rest:</label>
-      <input id="interval" type="number" />
+      <input id="interval" type="number" value="30" required />
       <button onclick="handleSubmitClick()">Submit</button>
+
     </div>
 
     <section>
-      <ul id="exercise-list"></ul>
-      <ul id="duration-list"></ul>
-      <ul id="reps-list"></ul>
-      <ul id="interval-list"></ul>
+      <ul id="exercise-list">Exercise</ul>
+      
+      
     </section>
 
     <button>Start</button>
