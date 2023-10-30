@@ -1,54 +1,50 @@
+const exerciseList = document.getElementById
+("exercise-list");
+const exercise = document.getElementById("exercise");
+const duration = document.getElementById("duration");
+const reps = document.getElementById("reps");
+const interval = document.getElementById("interval");
 
-const savedExercises = ['Exercise'];
-const savedDuration = ['Duration'];
-const savedReps = ['Reps'];
-const savedInterval = ['Intervals']
-const exerciseList = document.getElementById("exercise-list");
+if (!exerciseList.hasChildNodes()) {
+  showHeadings()
+}
 showExercises()
 
+function showHeadings () {
+  const li = document.createElement("li")
+  const exerciseSpan = document.createElement("span")
+  const durationSpan = document.createElement("span")
+  const repsSpan = document.createElement("span")
+  const intervalSpan = document.createElement("span")
+  const deleteSpan = document.createElement("span")
 
-function handleSubmitClick() {
-  // grab exercise input and add to exercise array
-  const exercise = document.getElementById("exercise");
-  const exerciseList = document.getElementById("exercise-list");
-  clearExercisesInUI();
-  savedExercises.push(exercise.value);
+  exerciseSpan.setAttribute("class", "exercise-format")
+  durationSpan.setAttribute("class", "duration-format")
+  repsSpan.setAttribute("class", "reps-format")
+  intervalSpan.setAttribute("class", "interval-format")
+  deleteSpan.setAttribute("id", "deleteSpanId")
 
-  // grab duration input and add to duration array
-  const duration = document.getElementById("duration");
-  const durationList = document.getElementById("duration-list");
-  savedDuration.push(duration.value);
-  console.log(savedDuration);
+  exerciseSpan.innerHTML = "Exercise"
+  durationSpan.innerHTML = "Duration (minutes)"
+  repsSpan.innerHTML = "Repetitions"
+  intervalSpan.innerHTML = "Rest Interval (seconds)"
+  deleteSpan.innerHTML = ""
 
-  // grab reps input and add to reps array
-  const reps = document.getElementById("reps");
-  const repsList = document.getElementById("reps-list");
-  savedReps.push(reps.value);
-  console.log(savedReps);
+  li.appendChild(exerciseSpan)
+  li.appendChild(durationSpan)
+  li.appendChild(repsSpan)
+  li.appendChild(intervalSpan)
+  li.appendChild(deleteSpan)
 
-  //grab interval input and add to interval array
-  const interval = document.getElementById("interval");
-  const intervalList = document.getElementById("interval-list");
-  savedInterval.push(interval.value);
-  console.log(savedInterval);
-
-    // adds exercises to page
-  for (let i = 0; i < savedExercises.length; i++) {
-    addItemToList(savedExercises[i], exerciseList);
-    // addItemToList(savedDuration[i], durationList);
-    // addItemToList(savedReps[i], repsList);
-    // addItemToList(savedInterval[i], intervalList);
-    // addItemToList("\u00d7", deleteList)
-    
-
-  }
+  exerciseList.appendChild(li)
   
-  
-
 }
 
 
-
+function handleSubmitClick() {   
+  addItemToList()
+} 
+  
 function clearExercisesInUI() {
   const exerciseList = document.getElementById("exercise-list");
   exerciseList.innerHTML = "";
@@ -62,7 +58,7 @@ function clearExercisesInUI() {
   // deleteList.innerHTML = ""
 }
 
-function addItemToList(exerciseName, exerciseList) {
+function addItemToList() {
   const li = document.createElement("li")
   const exerciseSpan = document.createElement("span")
   const durationSpan = document.createElement("span")
@@ -70,12 +66,20 @@ function addItemToList(exerciseName, exerciseList) {
   const intervalSpan = document.createElement("span")
   const deleteSpan = document.createElement("span")
 
+  exerciseSpan.setAttribute("class", "exercise-format")
+  durationSpan.setAttribute("class", "duration-format")
+  repsSpan.setAttribute("class", "reps-format")
+  intervalSpan.setAttribute("class", "interval-format")
   deleteSpan.setAttribute("id", "deleteSpanId")
 
-  exerciseSpan.innerHTML = exerciseName
-  durationSpan.innerHTML = exerciseName
-  repsSpan.innerHTML = exerciseName
-  intervalSpan.innerHTML = exerciseName
+  exerciseSpan.innerHTML = exercise.value
+  exercise.value = ""
+  durationSpan.innerHTML = duration.value
+  duration.value = ""
+  repsSpan.innerHTML = reps.value
+  reps.value = ""
+  intervalSpan.innerHTML = interval.value
+  interval.value = ""
   deleteSpan.innerHTML = "\u00d7"
 
   li.appendChild(exerciseSpan)
@@ -97,10 +101,23 @@ function showExercises() {
 }
 
 // delete exercise from list
-
   exerciseList.addEventListener("click", function(e) {
     e.target.parentNode.remove()
+    saveData()
 })
+
+//hide form when start is pressed
+
+function handleStartClick() {
+  const form = document.getElementById("form")
+  const startButton = document.getElementById("startButton")
+  if (form.style.display === "none") {
+    form.style.display = "flex"
+  } else {
+    form.style.display = "none"
+    startButton.innerHTML = "Add more exercises"
+  }
+}
 
 
 

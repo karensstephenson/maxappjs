@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-div {
+form {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -16,7 +16,7 @@ input {
     padding: 5px;
 }
 
-div button {
+form button {
     width: 200px;
 }
 
@@ -24,6 +24,7 @@ div button {
 
 section {
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: flex-start;
     padding: 10px;
@@ -32,14 +33,30 @@ section {
 
 ul {
     list-style: none;
-    display: flex;
-    flex-direction: column;    
+    display: grid;
+    /* flex-direction: column;     */
     align-items: center;
     padding: 20px;
+    width: 100%;
+    
 }
 
 li {
     padding: 10px;
+    display: flex;
+    width: 100%;
+    /* justify-content: space-around */
+    background-color: lightblue;
+}
+
+li:nth-child(odd) {
+    background-color: rgb(87, 87, 150)
+}
+
+li:first-child {
+    font-weight: bold;
+    background-color: black;
+    color: white;
 }
 
 #deleteSpan:hover {
@@ -48,11 +65,36 @@ li {
 
 span {
     padding: 10px;
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center
+
 }
 
 #deleteSpanId:hover {
     background-color: lightgray;
 }
+
+.exercise-format {
+    width: 150px;
+    text-align: left;
+}
+
+.duration-format, 
+.reps-format,
+.interval-format {
+    text-align: center;
+    width: 150px;
+}
+
+#deleteSpanId {
+    text-align: center;
+    padding-left: 25px;
+}
+
+
+
+
 
 
 

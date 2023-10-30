@@ -8,26 +8,26 @@
     <script defer src="js/main.js"></script>
   </head>
   <body>
-    <div action="">
+    <form id="form">
       <label for="exercise">Exercise: </label>
-      <input id="exercise" type="text" value="push up"   required/>
+      <input id="exercise" type="text" placeholder="Enter an exercise"   required/>
       <label for="duration">Duration: </label>
-      <input id="duration" type="number" value="0"/>
+      <input id="duration" type="number" placeholder="Enter duration (minutes)"/>
       <label for="reps">Reps: </label>
-      <input id="reps" type="number" value="0"/>
+      <input id="reps" type="number" placeholder="Enter number of reps"/>
       <label for="interval">Rest:</label>
-      <input id="interval" type="number" value="30" required />
+      <input id="interval" type="number" placeholder="Enter rest interval (seconds)" required />
       <button onclick="handleSubmitClick()">Submit</button>
 
-    </div>
+    </form>
 
     <section>
-      <ul id="exercise-list">Exercise</ul>
-      
+      <ul id="exercise-list">        
+      </ul>
       
     </section>
 
-    <button>Start</button>
+    <button id="startButton" onclick="handleStartClick()">Start</button>
     <button>Pause</button>
   </body>
 </html>
