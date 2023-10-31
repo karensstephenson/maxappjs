@@ -6,8 +6,6 @@ const reps = document.getElementById("reps");
 const interval = document.getElementById("interval");
 
 showExercises()
-//ShowHeadings()
-
 
 function showHeadings () {
   const li = document.createElement("li")
@@ -40,22 +38,14 @@ function showHeadings () {
 }
 
 
-function handleSubmitClick() {   
-  addItemToList()
-} 
+function handleSubmitClick() {
+  if (exercise.value === "" || (duration.value === "" && reps.value === "") || interval.value === "") {
+    alert("Fill in all fields")
+  } else {
+    addItemToList()
+  } 
   
-function clearExercisesInUI() {
-  const exerciseList = document.getElementById("exercise-list");
-  exerciseList.innerHTML = "";
-  // const durationList = document.getElementById("duration-list");
-  // durationList.innerHTML = "";
-  // const repsList = document.getElementById("reps-list");
-  // repsList.innerHTML = "";
-  // const intervalList = document.getElementById("interval-list");
-  // intervalList.innerHTML = "";
-  // const deleteList = document.getElementById("deleteList")
-  // deleteList.innerHTML = ""
-}
+} 
 
 function addItemToList() {
   const li = document.createElement("li")
@@ -70,6 +60,7 @@ function addItemToList() {
   repsSpan.setAttribute("class", "reps-format")
   intervalSpan.setAttribute("class", "interval-format")
   deleteSpan.setAttribute("id", "deleteSpanId")
+  li.setAttribute("id", "listItem")
 
   exerciseSpan.innerHTML = exercise.value
   exercise.value = ""
@@ -88,6 +79,7 @@ function addItemToList() {
   li.appendChild(deleteSpan)
 
   exerciseList.appendChild(li)
+
   saveData()
 }
 
@@ -109,8 +101,7 @@ function showExercises() {
     saveData()
 })
 
-//hide form when start is pressed
-
+//hide form and change buttons when start is pressed
 function handleStartClick() {
   const form = document.getElementById("form")
   const startButton = document.getElementById
@@ -144,26 +135,49 @@ function handleClearClick() {
 
 
 
+// let timeleft = 10;
+// const downloadTimer = setInterval(function(){
+//   if(timeleft <= 0){
+//     clearInterval(downloadTimer);
+//   }
+//   document.getElementById("progressBar").value = 10 - timeleft;
+//   timeleft -= 1;
+// }, 1000);
 
+
+
+console.log(interval.value)
+let timeleft = interval.value;
+
+const downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+  }
+  document.getElementById("progressBar").value = 10 - timeleft;
+  timeleft -= 1;
+}, 1000);
   
-
-
-
-
-function addDeleteButtonToList(exerciseName, exerciseList) {
-  const button = document.createElement("button");
-  button.setAttribute('id', exerciseName)
-  const textnode = document.createTextNode(exerciseName);
-  button.appendChild(textnode);
-  exerciseList.appendChild(button);
+const ul = document.getElementById("exercise-list");
+const items = ul.getElementsByTagName("li");
+// const li2 = document.querySelector("listItem")
+// const spans = li2.getElementsByTagName("span")
+for (let i = 1; i < items.length; i++) {
+//  let intervals = document.querySelector("interval-format").innerText
+//  console.log(intervals) 
+const li2 = document.getElementById("listItem")
+const spans = li2.getElementsByTagName("span")
+ console.log(items[i])
+ console.log(spans[3])
+ console.log(spans)
 }
 
 
 
-// if exercise or duration/reps or rest empty, display message to enter value
-if (exercise === "") {
-  console.log("Enter an exercise");
-}
+
+
+
+
+
 
 // displayed in a list
 

@@ -8,14 +8,14 @@
     <script defer src="js/main.js"></script>
   </head>
   <body>
-    <h1 id="h1">Design Your Workout</h1>
+    <!-- <h1 id="h1">Design Your Workout</h1> -->
     <form id="form">
       <label for="exercise">Exercise: </label>
       <input id="exercise" type="text" placeholder="Enter an exercise"   required/>
       <label for="duration">Duration: </label>
-      <input id="duration" type="number" placeholder="Enter duration (minutes)"/>
+      <input id="duration" type="number" placeholder="Enter duration (minutes)" required/>
       <label for="reps">Reps: </label>
-      <input id="reps" type="number" placeholder="Enter number of reps"/>
+      <input id="reps" type="number" placeholder="Enter number of reps" required/>
       <label for="interval">Rest:</label>
       <input id="interval" type="number" placeholder="Enter rest interval (seconds)" required />
       <button onclick="handleSubmitClick()">Submit</button>
@@ -28,9 +28,14 @@
       
     </section>
 
+    <div>
     <button id="startButton" onclick="handleStartClick()">Start</button>
     <button id="clear" onclick="handleClearClick()">Clear List</button>
     <button id="restart">Restart</button>
     <button id="pause">Pause</button>
+
+    </div>
+    <progress value="0" max="10" id="progressBar"></progress>
+    
   </body>
 </html>
