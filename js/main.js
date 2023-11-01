@@ -17,8 +17,7 @@ if (savedExercises) {
 
 
 showExercises()
-// const completeExercises = parsedSavedExercises
-// console.log(completeExercises)
+
 function showHeadings () {
   const li = document.createElement("li")
   const exerciseSpan = document.createElement("span")
@@ -68,15 +67,17 @@ function addItemToList() {
   const intervalSpan = document.createElement("span")
   const deleteSpan = document.createElement("span")
 
+  let uniqueId = new Date().getTime()
+  
   exerciseSpan.setAttribute("class", "exercise-format")
   durationSpan.setAttribute("class", "duration-format")
   repsSpan.setAttribute("class", "reps-format")
   intervalSpan.setAttribute("class", "interval-format")
-  deleteSpan.setAttribute("id", "deleteSpanId")
+  deleteSpan.setAttribute("id", uniqueId)
+  deleteSpan.setAttribute("class", "delete")
   li.setAttribute("id", "listItem")
   li.setAttribute("class", "listItemClass")
   
-  let uniqueId = new Data().getTime()
   
   const exerciseData = {
     id: uniqueId,
@@ -110,16 +111,7 @@ function addItemToList() {
   saveData()
 }
 
-// function exerciseArray() {
-//   const savedExercises = localStorage.getItem('completeExercises')
-//   if (savedExercises) {
-//     const parsedSavedExercises = JSON.parse(savedExercises)
-//     console.log(parsedSavedExercises)
-//   } else {
-//     const parsedSavedExercises = []
-//     console.log("No saved exercises")
-//   }
-// }
+
 
 
 
@@ -141,8 +133,34 @@ function showExercises() {
 // delete exercise from list
   exerciseList.addEventListener("click", function(e) {
     e.target.parentNode.remove()
+    // if (e.target.classList.contains("delete")) {
+    let idToRemove = Number(e.target.id)
+    console.log("working up to here")
+    console.log(typeof(idToRemove))
+    console.log(typeof(parsedSavedExercises[0].id))
+      // parsedSavedExercises = parsedSavedExercises.filter(function(submission) {
+      //  return submission.id !== idToRemove
+      // })
+    for (let i = 0; i < parsedSavedExercises.length; i++) {
+      if (parsedSavedExercises[i].id === idToRemove) {
+        console.log("working")
+        console.log(idToRemove)
+        parsedSavedExercises.splice(i, 1)
+        break
+      } else {
+        console.log("working here?")
+      }
+    }
+    
     saveData()
-})
+    console.log(parsedSavedExercises)
+    console.log(`Object with ID ${idToRemove} removed from the array.`) 
+              
+    })
+  
+    
+    
+  
 
 //hide form and change buttons when start is pressed
 function handleStartClick() {
@@ -209,25 +227,6 @@ function handleClearClick() {
 
 
 
-// const ul = document.getElementById("exercise-list");
-// const items = ul.getElementsByTagName("li");
-
-// // const li2 = document.querySelector("listItem")
-// // const spans = li2.getElementsByTagName("span")
-// intervalArray = []
-// for (let i = 1; i < items.length; i++) {
-// //  let intervals = document.querySelector("interval-format").innerText
-// //  console.log(intervals) 
-
-// const li2 = document.getElementById("listItem")
-// const spans = li2.getElementsByTagName("span")
-//  console.log(items[i])
-//  console.log(spans[3].innerText)
-//  console.log(spans)
- 
-//  intervalArray.push(li2.querySelector(".interval-format").innerText)
-//  console.log(intervalArray)
-//}
 
 
 
